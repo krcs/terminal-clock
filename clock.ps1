@@ -83,11 +83,10 @@ $win_height = $font_size.height
 $wx = [int](([console]::LargestWindowWidth-$win_width) / 2)
 $wy = [int](([console]::LargestWindowHeight-$win_height) / 2)
 
-$posx, $posy = $wx, $wy
+$posx = $wx
 $xoffset = $font_size.width + $margin
 
 [console]::CursorVisible = $false
-
 while ($true) {
     if ([console]::KeyAvailable) {
         [console]::ReadKey("NoEcho,IncludeKeyDown") | Out-Null
@@ -104,12 +103,11 @@ while ($true) {
             $idx = [int]"$_"
         }
         0..($font_size.height - 1) | % {
-            [console]::SetCursorPosition($posx, $wy + $_)
+            [console]::SetCursorPosition($posx - 1, $wy + $_ - 1)
             $chars[$idx][$_]
         }
         $posx += $xoffset
     }
-    [console]::SetCursorPosition(0, $posy + 1)
     Start-Sleep -Seconds 1
 }
 [console]::CursorVisible = $true
