@@ -1,6 +1,6 @@
 # Terminal clock
 
-### Python with curses.
+## Python (curses).
 
 ```
 usage: clock.py [-margin MARGIN] font
@@ -11,7 +11,7 @@ Example:
 ./clock.py -margin=3 ./font/f12x9.txt
 ```
 
-### Powershell
+## Powershell
 
 ```
 usage: clock.ps1 [-margin MARGIN] font
