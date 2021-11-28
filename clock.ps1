@@ -21,7 +21,6 @@ function get_size($content) {
     $font_height = 0
 
     $height = 0
-    $margin = 0
 
     foreach ($line in $content) {
         if ($line.Length -eq 0) {
@@ -37,18 +36,9 @@ function get_size($content) {
         }
 
         $height += 1
-
-        $line | ? { $_ -match "^\s*" } | % {
-            $slen = $matches[0].Length
-            if ($margin -eq 0) {
-                $margin = $slen
-            } elseif ($slen -lt $margin) {
-                $margin = $slen
-            }
-        }
     }
     return @{
-        width = ($font_width - $margin)
+        width = $font_width
         height = $font_height
     }
 }

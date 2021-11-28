@@ -36,9 +36,6 @@ class AsciiFont:
         font_height = 0
 
         height = 0
-        margin = 0
-
-        margin_rx = re.compile("^\s*")
 
         for line in self._lines:
 
@@ -52,15 +49,6 @@ class AsciiFont:
                 font_width = len(line)
 
             height += 1
-
-            m = margin_rx.search(line)
-            if m:
-                if margin == 0:
-                    margin = m.end()
-                elif m.end() < margin:
-                    margin = m.end()
-
-        font_width = font_width - margin
         return [font_width, font_height]
 
     def _get_chars(self):
