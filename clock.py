@@ -54,6 +54,7 @@ def main():
     wy = (height - win_height) // 2
 
     if out_of_screen(win_width, win_height, screen):
+        curses.endwin()
         return
 
     win = curses.newwin(win_height, win_width+1, wy, wx)
